@@ -4,7 +4,17 @@
         <!--
         function reverse_counter(){
             today = new Date();
-            d_day = new Date("Dec 19 2016 17:00:00");
+            day_of_today = new Date(today - 17 * 60 * 60 * 1000).getDay();
+            var d_day;
+            if (day_of_today == 1 || day_of_today == 2) {
+                d_day = new Date(today.valueOf() + (3 - day_of_today) * 24 * 60 * 60 * 1000);
+            } else {
+                d_day = new Date(today.valueOf() + ((8 - day_of_today) % 7) * 24 * 60 * 60 * 1000);
+            }
+            d_day.setTime(d_day.valueOf() - 17 * 60 * 60 * 1000);
+            d_day.setHours(17, 0, 0);
+            // below is for manual setting
+            // d_day = new Date("Dec 19 2016 17:00:00");
             days = (d_day - today) / 1000 / 60 / 60 / 24;
             daysRound = Math.floor(days);
             hours = (d_day - today) / 1000 / 60 / 60 - (24 * daysRound);
