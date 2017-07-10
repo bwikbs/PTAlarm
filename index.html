@@ -1,48 +1,31 @@
+<!DOCTYPE html>
 <html>
-<HEAD>
-    <meta charset="utf-8">
-    <SCRIPT type="text/javascript">
-        <!--
-        function reverse_counter(){
-            today = new Date();
-            day_of_today = new Date(today - 17 * 60 * 60 * 1000).getDay();
-            var d_day;
-            if (day_of_today == 1 || day_of_today == 2) {
-                d_day = new Date(today.valueOf() + (3 - day_of_today) * 24 * 60 * 60 * 1000);
-            } else {
-                d_day = new Date(today.valueOf() + ((8 - day_of_today) % 7) * 24 * 60 * 60 * 1000);
-            }
-            d_day.setTime(d_day.valueOf() - 17 * 60 * 60 * 1000);
-            d_day.setHours(17, 0, 0);
-            // below is for manual setting
-            // d_day = new Date("Dec 19 2016 17:00:00");
-            days = (d_day - today) / 1000 / 60 / 60 / 24;
-            daysRound = Math.floor(days);
-            hours = (d_day - today) / 1000 / 60 / 60 - (24 * daysRound);
-            hoursRound = Math.floor(hours);
-            minutes = (d_day - today) / 1000 /60 - (24 * 60 * daysRound) - (60 * hoursRound);
-            minutesRound = Math.floor(minutes);
-            seconds = (d_day - today) / 1000 - (24 * 60 * 60 * daysRound) - (60 * 60 * hoursRound) -
-            (60 * minutesRound);
-            secondsRound = Math.round(seconds);
-            sec = " 초."
-            min = " 분, "
-            hr = " 시간, "
-            dy = " 일, "
-            document.counter.counter_box.value = " PT까지 남은 시간!! : " + daysRound +
-            dy + hoursRound + hr + minutesRound + min + secondsRound + sec;
-            newtime = window.setTimeout("reverse_counter();", 1000);
-        }
-//-->
-</script>
-</HEAD>
-<BODY onLoad="reverse_counter();" style="background-color: black;">
-    <img src="http://cfile30.uf.tistory.com/image/2432CC3A522D23C431D700">
-    <img>
-    <center>
-        <form name="counter">
-            <input type="text" name="counter_box" size="55" style="background-color: red; font-size: 30px">
-        </form>
-    </center>
-</body>
+  <head>
+    <style>
+      #map {
+        height: 400px;
+        width: 100%;
+       }
+    </style>
+  </head>
+  <body>
+    <h3>My Google Maps Demo</h3>
+    <div id="map"></div>
+    <script>
+      function initMap() {
+        var uluru = {lat: -25.363, lng: 131.044};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 4,
+          center: uluru
+        });
+        var marker = new google.maps.Marker({
+          position: uluru,
+          map: map
+        });
+      }
+	  console.log("before load");
+    </script>
+    <script  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBqXEo_1aZqXj6Gr7u2ImhegZjbOMmKbzg&callback=initMap">
+    </script>
+  </body>
 </html>
