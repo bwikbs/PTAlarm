@@ -1,20 +1,27 @@
-<!DOCTYPE html>
 <html>
   <head>
-    <title>Add Map</title>
-
-    <link rel="stylesheet" type="text/css" href="./style.css" />
-    <script src="./index.js"></script>
+    <style>
+      #map {
+        height: 100%;
+        width: 100%;
+       }
+    </style>
   </head>
   <body>
     <h3>My Google Maps Demo</h3>
-    <!--The div element for the map -->
     <div id="map"></div>
-
-    <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
-    <script
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD6nagfgaCjVuIp8hmoMiMOGYBtBR8r7nA&callback=initMap&libraries=&v=weekly"
-      async
-    ></script>
-  </body>
-</html>
+    <script>
+      function initMap() {
+        var uluru = {lat: -25.363, lng: 131.044};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 4,
+          center: uluru
+        });
+        var marker = new google.maps.Marker({
+          position: uluru,
+          map: map
+        });
+      }
+      console.log("before load");
+    </script>
+    <script  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD6nagfgaCjVuIp8hmoMiMOGYBtBR8r7nA&callback=initMap">
